@@ -1,0 +1,23 @@
+# 这些代码写的有问题吗
+name: 1.12.2-build
+
+on:
+  push:
+    tags:
+      - 'release-*'
+      - 'release'
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: |
+          docker login --username=${{ vars.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_SK }}
+          docker build --target=build-1.12.2 --tag=${{ vars.DOCKERHUB_REPONAME }}:build-1.12.2
+          docker build --target=run-1.12.2 --tag=${{ vars.DOCKERHUB_REPONAME }}:1.12.2
+          docker tag ${{ vars.DOCKERHUB_REPONAME }}:1.12.2 ${{ vars.DOCKERHUB_REPONAME }}:latest
+          docker tag ${{ GITHUB.GITHUB_SHA }} ${{ vars.DOCKERHUB_REPONAME }}:1.12.2
+          docker push ${{ vars.DOCKERHUB_REPONAME }}:1.12.2
