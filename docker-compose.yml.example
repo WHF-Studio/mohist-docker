@@ -1,0 +1,18 @@
+# yaml版本
+version: 3
+# 环境变量
+vars:
+  minecraft_version: 1.12.2
+# 服务
+services:
+  # 服务器名称
+  minecraft:
+    # 容器镜像地址，请不要改动
+    image: whf-studio/mohist-docker:1.12.2
+    container_name: mohist-1.12.2
+    restart: always
+    ports:
+      - 25565:25565/tcp
+      - 25575:25575/tcp
+      - 25575:25575/udp
+    volumes: /path/to/your/data:/app:z
