@@ -18,7 +18,7 @@ RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
 
 # 下载服务器
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.12.2
 FROM azul/zulu-openjdk-alpine:8-jre-headless-latest AS run-1.12.2
@@ -61,7 +61,7 @@ RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
 
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
 # run stage for minecraft 1.16.5
 FROM azul/zulu-openjdk-alpine:11-jre-headless-latest AS run-1.16.5
 ENV version=1.16.5
@@ -101,7 +101,7 @@ COPY script/download.sh /app
 RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.18.2
 
@@ -146,7 +146,7 @@ COPY script/download.sh /app
 RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.19.2
 
@@ -190,7 +190,7 @@ COPY script/download.sh /app
 RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
     
 # run stage for minecraft 1.20.1
 
@@ -213,8 +213,7 @@ RUN chmod a+x /app/init.sh
 RUN /app/init.sh
 
 ENTRYPOINT [ "/usr/bin/java" ]
-
-CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+CMD [ "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.20.2
 
@@ -234,7 +233,7 @@ COPY script/download.sh /app
 RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
 RUN chmod a+r /app/eula.txt
-RUN /app/download.sh --minecraft=$version
+RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20.2
 FROM azul/zulu-openjdk-alpine:20-jre-headless-latest AS run-1.20.2
@@ -251,5 +250,6 @@ COPY --from=mohist-docker:build-1.20.2 /app/eula.txt /app/eula.txt
 COPY script/init.sh /app
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-ENTRYPOINT [ "/usr/bin/java" ]
-CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+ENTRYPOINT [ "/bin/sh" ]
+# CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+CMD [ "ls", "-alh" ]
