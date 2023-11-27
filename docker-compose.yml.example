@@ -8,11 +8,11 @@ services:
   # 服务器名称
   minecraft:
     # 容器镜像地址，请不要改动
-    image: whf-studio/mohist-docker:1.12.2
-    container_name: mohist-1.12.2
+    image: whf-studio/mohist-docker:1.20.1
+    container_name: mohist-1.20.1
     restart: always
     ports:
       - 25565:25565/tcp
       - 25575:25575/tcp
       - 25575:25575/udp
-    volumes: /path/to/your/data:/app:z
+    volumes: /path/to/your/data:/app
