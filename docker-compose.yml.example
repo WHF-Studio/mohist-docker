@@ -2,7 +2,7 @@
 version: 3
 # 环境变量
 vars:
-  minecraft_version: 1.12.2
+  minecraft_version: 1.20.1
 # 服务
 services:
   # 服务器名称
@@ -16,3 +16,27 @@ services:
       - 25575:25575/tcp
       - 25575:25575/udp
     volumes: /path/to/your/data:/app
+# Bungeecord 示例
+services:
+  # Bungeecord 
+  bungeecord:
+    image: azul/zulu-openjdk-alpine:20-jre-headless-latest
+    container_name: bungeecord
+    restart: unless-stopped
+    ports:
+      - 25565:25565/tcp
+      - 25575:25575/tcp
+      - 25575:25575/udp
+    volumes: /path/to/your/data:/app
+    entrypoint: ["/usr/bin/java"]
+    cmd: ["-jar", "/app/bungeecord.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+  Lobby:
+    image: whf-studio/mohist-docker:1.20.1
+    container_name: lobby
+    restart: unless-stopped
+    ports:
+      - 25565:25576/tcp
+      - 25575:25576/tcp
+    volumes: /path/to/your/data:/app
+    depends_on:
+      - bungeecord
