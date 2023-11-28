@@ -1,8 +1,9 @@
-# 这些代码写的有问题吗
 name: 1.12.2-build
 
 on:
   push:
+    branches:
+      -'main'
     tags:
       - 'release-*'
       - 'release'
