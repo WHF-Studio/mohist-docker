@@ -4,7 +4,7 @@ ENV version=1.12.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -26,7 +26,7 @@ ENV version=1.12.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -49,7 +49,7 @@ ENV version=1.16.5
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -69,7 +69,7 @@ ENV version=1.16.5
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -93,7 +93,7 @@ ENV version=1.18.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -113,7 +113,7 @@ ENV version=1.18.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -139,7 +139,7 @@ ENV version=1.19.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -159,7 +159,7 @@ ENV version=1.19.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -184,7 +184,7 @@ ENV version=1.20.1
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -204,7 +204,7 @@ ENV version=1.20.1
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -229,7 +229,7 @@ ENV version=1.20.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
@@ -247,7 +247,7 @@ ENV version=1.20.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.2
+LABEL version=1.0.0
 
 RUN mkdir /app
 WORKDIR /app
