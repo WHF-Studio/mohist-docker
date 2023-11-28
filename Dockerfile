@@ -30,17 +30,18 @@ LABEL version=0.0.1
 
 RUN mkdir /app
 WORKDIR /app
-COPY --from=mohist-docker:build-1.12.2 /app/server.jar /app/server.jar
-COPY --from=mohist-docker:build-1.12.2 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.12.2 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.12.2 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 
 EXPOSE 25565
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
+RUN ln /jbin/* /app
 ENTRYPOINT [ "/usr/bin/java -jar" ]
 
-CMD [ "server.jar", "@memorysize.txt", "@userjvmargs.txt"]
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 # build stage for minecraft 1.16.5
 
 FROM alpine as build-1.16.5
@@ -73,16 +74,17 @@ LABEL version=0.0.1
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=mohist-docker:build-1.16.5 /app/server.jar /app/server.jar
-COPY --from=mohist-docker:build-1.16.5 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.16.5 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.16.5 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
+RUN ln /jbin/* /app
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.18.2
 
@@ -116,17 +118,18 @@ LABEL version=0.0.1
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=mohist-docker:build-1.18.2 /app/server.jar /app/server.jar
+COPY --from=mohist-docker:build-1.18.2 /app/server.jar /jbin/server.jar
 
-COPY --from=mohist-docker:build-1.18.2 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.18.2 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
+RUN ln /jbin/* /app
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.19.2
 
@@ -161,16 +164,17 @@ LABEL version=0.0.1
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=mohist-docker:build-1.19.2 /app/server.jar /app/server.jar
-COPY --from=mohist-docker:build-1.19.2 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.19.2 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.19.2 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
+RUN ln /jbin/* /app
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.20.1
 
@@ -205,15 +209,17 @@ LABEL version=0.0.1
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=mohist-docker:build-1.20.1 /app/server.jar /app/server.jar
-COPY --from=mohist-docker:build-1.20.1 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.20.1 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.20.1 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
+RUN ln /jbin/* /app
 
 ENTRYPOINT [ "/usr/bin/java" ]
-CMD [ "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.20.2
 
@@ -245,11 +251,13 @@ LABEL version=0.0.1
 
 RUN mkdir /app
 WORKDIR /app
-COPY --from=mohist-docker:build-1.20.2 /app/server.jar /app/server.jar
-COPY --from=mohist-docker:build-1.20.2 /app/eula.txt /app/eula.txt
+COPY --from=mohist-docker:build-1.20.2 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.20.2 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-ENTRYPOINT [ "/bin/sh" ]
-# CMD [ "@memorysize.txt","server.jar", "@userjvmargs.txt"]
-CMD [ "ls", "-alh" ]
+RUN ln /jbin/* /app
+
+ENTRYPOINT [ "/usr/bin/java" ]
+
+CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
