@@ -1,4 +1,4 @@
-name: 1.12.2-build
+name: 1.12.2-publish
 
 on:
   push:
@@ -13,12 +13,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: |
-          docker login --username=${{ vars.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_SK }}
-          docker build --target=build-1.12.2 --tag=${{ vars.DOCKERHUB_REPONAME }}:build-1.12.2
-          docker build --target=run-1.12.2 --tag=${{ vars.DOCKERHUB_REPONAME }}:1.12.2
-          docker tag ${{ vars.DOCKERHUB_REPONAME }}:1.12.2 ${{ vars.DOCKERHUB_REPONAME }}:latest
-          docker tag ${{ GITHUB.GITHUB_SHA }} ${{ vars.DOCKERHUB_REPONAME }}:1.12.2
-          docker push ${{ vars.DOCKERHUB_REPONAME }}:1.12.2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_SK }}
+      - uses: docker/metadata-action@v5
+        with:
+          images: |
+            WHF-Studio/mohist-docker
+          tags: |
+            value=1.12.2,value=latest-1.12.2
+          labels: |
+            org.opencontainers.image.title=mohist-docker
+            org.opencontainers.image.description=A Docker image for running the Mohist server
+            org.opencontainers.image.url=https://github.com/WHF-Studio/mohist-docker
+            org.opencontainers.image.source=https://github.com/WHF-Studio/mohist-docker
+      - uses: docker/push-action@v5
+        with:
+          tags: mohist-docker:build-1.12.2
+          target: build-1.12.2
+          no-cache: true
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          target: run-1.12.2
+          no-cache: true
+          build-args: |
+            DOCKER_METADATA_OUTPUT_JSON
