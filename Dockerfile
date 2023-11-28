@@ -39,7 +39,7 @@ EXPOSE 25565
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
 RUN ln /jbin/* /app
-ENTRYPOINT [ "/usr/bin/java -jar" ]
+ENTRYPOINT [ "/usr/bin/java" ]
 
 CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 # build stage for minecraft 1.16.5
