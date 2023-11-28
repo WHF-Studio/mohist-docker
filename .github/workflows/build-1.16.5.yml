@@ -1,0 +1,46 @@
+name: 1.16.5-publish
+
+on:
+  push:
+    branches:
+      -'main'
+    tags:
+      - 'release-*'
+      - 'release'
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_SK }}
+      - uses: docker/metadata-action@v5
+        with:
+          images: |
+            WHF-Studio/mohist-docker
+          tags: |
+            value=1.16.5,value=latest-1.16.5
+          labels: |
+            org.opencontainers.image.title=mohist-docker
+            org.opencontainers.image.description=A Docker image for running the Mohist server
+            org.opencontainers.image.url=https://github.com/WHF-Studio/mohist-docker
+            org.opencontainers.image.source=https://github.com/WHF-Studio/mohist-docker
+      - uses: docker/push-action@v5
+        with:
+          tags: mohist-docker:build-1.16.5
+          target: build-1.16.5
+          no-cache: true
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          target: run-1.16.5
+          no-cache: true
+          build-args: |
+            DOCKER_METADATA_OUTPUT_JSON
