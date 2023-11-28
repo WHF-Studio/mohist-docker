@@ -4,7 +4,7 @@ ENV version=1.12.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -26,7 +26,7 @@ ENV version=1.12.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -38,10 +38,10 @@ EXPOSE 25565
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 # build stage for minecraft 1.16.5
 
 FROM alpine as build-1.16.5
@@ -49,7 +49,7 @@ ENV version=1.16.5
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -69,7 +69,7 @@ ENV version=1.16.5
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -80,11 +80,11 @@ COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.18.2
 
@@ -93,7 +93,7 @@ ENV version=1.18.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -113,7 +113,7 @@ ENV version=1.18.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -125,11 +125,11 @@ COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.19.2
 
@@ -139,7 +139,7 @@ ENV version=1.19.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -159,7 +159,7 @@ ENV version=1.19.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -170,11 +170,11 @@ COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.20.1
 
@@ -184,7 +184,7 @@ ENV version=1.20.1
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -204,7 +204,7 @@ ENV version=1.20.1
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -215,11 +215,11 @@ COPY script/init.sh /app
 
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
 
 # build stage for minecraft 1.20.2
 
@@ -229,7 +229,7 @@ ENV version=1.20.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -247,7 +247,7 @@ ENV version=1.20.2
 
 LABEL maintaner="敖律风"
 LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
-LABEL version=0.0.1
+LABEL version=0.0.2
 
 RUN mkdir /app
 WORKDIR /app
@@ -256,8 +256,8 @@ COPY --from=mohist-docker:build-1.20.2 /app/eula.txt /jbin/eula.txt
 COPY script/init.sh /app
 RUN chmod a+x /app/init.sh
 RUN /app/init.sh
-RUN ln /jbin/* /app
+
 
 ENTRYPOINT [ "/usr/bin/java" ]
 
-CMD [ "-jar", "server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
+CMD [ "-jar", "/jbin/server.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
