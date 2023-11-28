@@ -10,6 +10,17 @@
 - 完全开箱即用
 - 无需安装任何依赖
 - 镜像大小只有18.3232 MiB左右
+## 构建状态
+[![1.12.2-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml)
+
+[![1.16.5-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.16.5.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.16.5.yml)
+
+[![1.18.2-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.18.2.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.18.2.yml)
+
+[![1.19.2-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.19.2.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.19.2.yml)
+
+[![1.20.1-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.20.1.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.20.1.yml)
+
 ## 镜像使用
 ### 第一次使用
 ```bash
