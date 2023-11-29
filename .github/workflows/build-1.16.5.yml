@@ -25,7 +25,7 @@ jobs:
           images: |
             WHF-Studio/mohist-docker
           tags: |
-            value=1.16.5,value=latest-1.16.5
+            value=mohist-docker:1.16.5,value=mohist-docker:latest-1.16.5
           labels: |
             org.opencontainers.image.title=mohist-docker
             org.opencontainers.image.description=A Docker image for running the Mohist server
