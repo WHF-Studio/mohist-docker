@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: [ 'v*.*.*', "test" ]
 
 jobs:
   build:
@@ -38,6 +38,10 @@ jobs:
           tags: mohist-docker:build-1.12.2
           target: build-1.12.2
           no-cache: true
+      - name: debug for action
+        run: |
+          echo ${{ steps.metadata.outputs.tags }}
+          echo ${{ steps.metadata.outputs.labels }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -45,5 +49,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           target: run-1.12.2
           no-cache: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
