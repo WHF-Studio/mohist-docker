@@ -29,8 +29,9 @@ jobs:
           labels: |
             org.opencontainers.image.title=mohist-docker
             org.opencontainers.image.description=A Docker image for running the Mohist server
-            org.opencontainers.image.url=https://github.com/WHF-Studio/mohist-docker
+            org.opencontainers.image.url=https://hub.docker.com/r/WHF-Studio/mohist-docker
             org.opencontainers.image.source=https://github.com/WHF-Studio/mohist-docker
+            org.opencontainers.image.author=敖律风
       - name: Build dependencies Docker image
         uses: docker/build-push-action@v5
         with:
@@ -44,5 +45,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           target: run-1.16.5
           no-cache: true
-          build-args: |
-            DOCKER_METADATA_OUTPUT_JSON
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
