@@ -2,25 +2,23 @@ name: 1.20.2-publish
 
 on:
   push:
-    branches:
-      -'main'
-    tags:
-      # - 'release-*'
-      # - 'release'
-      - 'v*'
+    branches: [ "main" ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: docker/login-action@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log into dockerHUB
+        uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_SK }}
-      - uses: docker/metadata-action@v5
+      - name: Generate Docker metadata
+        uses: docker/metadata-action@v5
         with:
           images: |
             WHF-Studio/mohist-docker
@@ -31,12 +29,14 @@ jobs:
             org.opencontainers.image.description=A Docker image for running the Mohist server
             org.opencontainers.image.url=https://github.com/WHF-Studio/mohist-docker
             org.opencontainers.image.source=https://github.com/WHF-Studio/mohist-docker
-      - uses: docker/push-action@v5
+      - name: Build dependencies Docker image
+        uses: docker/build-push-action@v5
         with:
           tags: mohist-docker:build-1.20.1
           target: build-1.20.1
           no-cache: true
-      - uses: docker/build-push-action@v5
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
