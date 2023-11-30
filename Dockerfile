@@ -198,7 +198,7 @@ RUN /app/download.sh --minecraft $version
     
 # run stage for minecraft 1.20.1
 
-FROM azul/zulu-openjdk-alpine:20-jre-headless-latest AS run-1.20.1
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20.1
 
 ENV version=1.20.1
 
@@ -242,7 +242,7 @@ RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20.2
-FROM azul/zulu-openjdk-alpine:20-jre-headless-latest AS run-1.20.2
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20.2
 ENV version=1.20.2
 
 LABEL maintaner="敖律风"
