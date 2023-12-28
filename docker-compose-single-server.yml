@@ -17,7 +17,7 @@ services:
       # rcon控制台
       - 25575:25575/tcp
     volumes:
-    - /path/to/your/data:/app
+    - ./:/app
     # 可选：将世界数据挂在单独的卷以免L大手子（暴论）删档,如果你不想要，可以直接注释掉以下全文
     - world:/app/world
 volumes:
