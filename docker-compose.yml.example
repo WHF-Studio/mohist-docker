@@ -13,9 +13,12 @@ services:
     restart: always
     ports:
       - 25565:25565/tcp
+      # rcon控制台
       - 25575:25575/tcp
-      - 25575:25575/udp
-    volumes: /path/to/your/data:/app
+    volumes:
+    - /path/to/your/data:/app
+    # 可选：将世界数据挂在单独的卷以免炸档
+    - world:/app/world
 # Bungeecord 示例
 services:
   # Bungeecord 

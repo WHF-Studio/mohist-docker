@@ -1,0 +1,20 @@
+version: 3
+# 环境变量
+vars:
+  minecraft_version: 1.20.1
+# 服务
+services:
+  # 服务器名称
+  minecraft:
+    # 容器镜像地址，请不要改动
+    image: whf-studio/mohist-docker:1.20.1
+    container_name: mohist-1.20.1
+    restart: always
+    ports:
+      - 25565:25565/tcp
+      # rcon控制台
+      - 25575:25575/tcp
+    volumes:
+    - /path/to/your/data:/app
+    # 可选：将世界数据挂在单独的卷以免L大手子（暴论）删档
+    - world:/app/world

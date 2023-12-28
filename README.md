@@ -10,6 +10,25 @@
 - 完全开箱即用
 - 无需安装任何依赖
 - 镜像大小只有18.3232 MiB左右
+## 快速开始
+GNU/Linux:
+```bash
+# 直接复制黏贴到终端即可
+mkdir -p /srv/minecraft/mohist
+curl -L https://raw.githubusercontent.com/WHF-Studio/mohist-docker/main/docker-compose-single.yml -o /srv/minecraft/mohist/docker-compose.yml
+cd /srv/minecraft/mohist
+docker-compose up -d
+
+```
+Windows:
+```PowerShell
+# 首先安装 docker desktop 并启动
+# 然后复制黏贴到PowerShell即可
+Cereate-Item -ItemType Directory -Force -Path "C:\Users\Administrator\minecraft\mohist"
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/WHF-Studio/mohist-docker/main/docker-compose-single.yml -OutFile "C:\Users\Administrator\minecraft\mohist\docker-compose.yml"
+Set-Location "C:\Users\Administrator\minecraft\mohist"
+docker-compose up -d
+```
 ## 构建状态
 [![1.12.2-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml)
 
