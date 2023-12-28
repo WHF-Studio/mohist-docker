@@ -55,7 +55,7 @@ RUN chmod a+x /app/download.sh
 
 RUN /app/download.sh --minecraft $version
 # run stage for minecraft 1.16.5
-FROM azul/zulu-openjdk-alpine:11-headless-jre-latest AS run-1.16.5
+FROM azul/zulu-openjdk-alpine:11-jre-headless-latest AS run-1.16.5
 ENV version=1.16.5
 
 LABEL maintaner="敖律风"
@@ -129,7 +129,7 @@ RUN chmod a+x /app/download.sh
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.19.2
-FROM azul/zulu-openjdk-alpine:17-headless-jre-latest AS run-1.19.2
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.19.2
 ENV version=1.19.2
 
 LABEL maintaner="敖律风"
@@ -165,7 +165,7 @@ RUN chmod a+x /app/download.sh
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20
-FROM azul/zulu-openjdk-alpine:17-jre-latest AS run-1.20
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20
 
 ENV version=1.20
 
@@ -241,7 +241,7 @@ RUN chmod a+x /app/download.sh
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20.2
-FROM azul/zulu-openjdk-alpine:17-jre-latest AS run-1.20.2
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20.2
 ENV version=1.20.2
 
 LABEL maintaner="敖律风"
