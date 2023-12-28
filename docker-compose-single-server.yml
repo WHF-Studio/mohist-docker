@@ -9,6 +9,8 @@ services:
     # 容器镜像地址，请不要改动
     image: whfstudio/mohist-docker:1.20.1
     container_name: mohist-1.20.1
+    stdin_open: true
+    tty: true
     restart: always
     ports:
       - 25565:25565/tcp

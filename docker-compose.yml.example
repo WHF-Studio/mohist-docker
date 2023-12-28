@@ -11,6 +11,8 @@ services:
     image: whf-studio/mohist-docker:1.20.1
     container_name: mohist-1.20.1
     restart: always
+    stdin_open: true
+    tty: true
     ports:
       - 25565:25565/tcp
       # rcon控制台
@@ -25,6 +27,8 @@ services:
   bungeecord:
     image: azul/zulu-openjdk-alpine:20-jre-headless-latest
     container_name: bungeecord
+    stdin_open: true
+    tty: true
     restart: unless-stopped
     ports:
       - 25565:25565/tcp
@@ -36,6 +40,8 @@ services:
   Lobby:
     image: whf-studio/mohist-docker:1.20.1
     container_name: lobby
+    stdin_open: true
+    tty: true
     restart: unless-stopped
     ports:
       - 25565:25576/tcp
@@ -43,3 +49,13 @@ services:
     volumes: /path/to/your/data:/app
     depends_on:
       - bungeecord
+    main_server: example_server
+      image: whfstudio/mohist-docker:1.20.1
+      container_name: example_server
+      stdin_open: true
+      tty: true
+      restart: unless-stopped
+      ports:
+        - 25565:25569/tcp
+        - 25575:25579/tcp
+      volumes: /path/to/your/data:/app
