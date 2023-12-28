@@ -159,6 +159,45 @@ RUN /script/init.sh
 
 ENTRYPOINT [ "/script/lunch.sh" ]
 
+# build stage for minecraft 1.20
+FROM alpine AS build-1.20
+
+ENV version=1.20
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.0
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY script/download.sh /app
+RUN echo "eula=true" > eula.txt
+RUN chmod a+x /app/download.sh
+RUN chmod a+r /app/eula.txt
+RUN /app/download.sh --minecraft $version
+
+# run stage for minecraft 1.20
+FROM azul/zulu-openjdk-alpine:17-jre-latest AS run-1.20
+
+ENV version=1.20
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.1
+
+RUN mkdir /app /script
+WORKDIR /app
+
+COPY --from=mohist-docker:build-1.20 /app/server.jar /jbin/server.jar
+COPY --from=mohist-docker:build-1.20 /app/eula.txt /jbin/eula.txt 
+COPY script/*.sh /script/
+
+RUN chmod a+x /script/*.sh
+RUN /script/init.sh
+
+ENTRYPOINT [ "/script/lunch.sh" ]
+
 # build stage for minecraft 1.20.1
 
 FROM alpine as build-1.20.1
