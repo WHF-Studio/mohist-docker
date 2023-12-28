@@ -15,7 +15,7 @@ GNU/Linux:
 ```bash
 # 直接复制黏贴到终端即可
 mkdir -p /srv/minecraft/mohist
-curl -L https://raw.githubusercontent.com/WHF-Studio/mohist-docker/main/docker-compose-single-server.yml -o /srv/minecraft/mohist/docker-compose.yml
+curl -L https://raw.githubusercontents.com/WHF-Studio/mohist-docker/main/docker-compose-single-server.yml -o /srv/minecraft/mohist/docker-compose.yml
 cd /srv/minecraft/mohist
 docker-compose up -d
 
@@ -25,7 +25,7 @@ Windows:
 # 首先安装 docker desktop 并启动
 # 然后复制黏贴到PowerShell即可
 Cereate-Item -ItemType Directory -Force -Path "C:\Users\Administrator\minecraft\mohist"
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/WHF-Studio/mohist-docker/main/docker-compose-single-server.yml -OutFile "C:\Users\Administrator\minecraft\mohist\docker-compose.yml"
+Invoke-WebRequest -Uri https://raw.githubusercontents.com/WHF-Studio/mohist-docker/main/docker-compose-single-server.yml -OutFile "C:\Users\Administrator\minecraft\mohist\docker-compose.yml"
 Set-Location "C:\Users\Administrator\minecraft\mohist"
 docker-compose up -d
 ```
