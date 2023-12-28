@@ -7,7 +7,7 @@ services:
   # 服务器名称
   minecraft:
     # 容器镜像地址，请不要改动
-    image: whf-studio/mohist-docker:1.20.1
+    image: whfstudio/mohist-docker:1.20.1
     container_name: mohist-1.20.1
     restart: always
     ports:
