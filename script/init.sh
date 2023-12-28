@@ -1,4 +1,6 @@
 #!/bin/sh
+sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories
+apk add --no-cache bash
 if [ -f "/app/memorysize.txt" ]
     then
     echo "Using memorysize from /app/memorysize.txt"

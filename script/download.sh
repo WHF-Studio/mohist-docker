@@ -32,5 +32,3 @@ if [ "$localMd5" = "$fileMd5" ]; then
   else
   echo 文件校验成功，云端md5为$fileMd5，本地md5为$localMd5，确认一致
 fi
-# 清理
-apk del curl jq
