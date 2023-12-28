@@ -11,11 +11,9 @@ WORKDIR /app
 COPY script/download.sh /app
 
 # 同意eula
-RUN echo "eula=true" > eula.txt
 
 # 授权脚本
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 
 # 下载服务器
 RUN /app/download.sh --minecraft $version
@@ -32,7 +30,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.12.2 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.12.2 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -52,11 +49,9 @@ WORKDIR /app
 
 # 拷贝脚本
 COPY script/download.sh /app
-RUN echo "eula=true" > eula.txt
 
 # 授权脚本
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 
 RUN /app/download.sh --minecraft $version
 # run stage for minecraft 1.16.5
@@ -71,7 +66,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.16.5 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.16.5 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -93,9 +87,7 @@ WORKDIR /app
 
 COPY script/download.sh /app
 
-RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.18.2
@@ -111,7 +103,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.18.2 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.18.2 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -134,9 +125,7 @@ WORKDIR /app
 
 COPY script/download.sh /app
 
-RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.19.2
@@ -151,7 +140,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.19.2 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.19.2 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -172,9 +160,8 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY script/download.sh /app
-RUN echo "eula=true" > eula.txt
+
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20
@@ -190,7 +177,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.20 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.20 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -213,9 +199,7 @@ WORKDIR /app
 
 COPY script/download.sh /app
 
-RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
     
 # run stage for minecraft 1.20.1
@@ -231,7 +215,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.20.1 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.20.1 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
@@ -254,9 +237,7 @@ WORKDIR /app
 
 COPY script/download.sh /app
 
-RUN echo "eula=true" > eula.txt
 RUN chmod a+x /app/download.sh
-RUN chmod a+r /app/eula.txt
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.20.2
@@ -271,7 +252,6 @@ RUN mkdir /app /script
 WORKDIR /app
 
 COPY --from=mohist-docker:build-1.20.2 /app/server.jar /jbin/server.jar
-COPY --from=mohist-docker:build-1.20.2 /app/eula.txt /jbin/eula.txt 
 COPY script/*.sh /script/
 
 RUN chmod a+x /script/*.sh
