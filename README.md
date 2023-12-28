@@ -11,7 +11,13 @@
 - 无需安装任何依赖
 - 镜像大小只有18.3232 MiB左右
 ## 快速开始
-GNU/Linux:
+<b>
+<font color=#7bf081>
+tips: 默认为你的世界单独创建一个卷
+</font>
+</b>
+
+- GNU/Linux:
 ```bash
 # 直接复制黏贴到终端即可
 mkdir -p /srv/minecraft/mohist
@@ -20,7 +26,7 @@ cd /srv/minecraft/mohist
 docker-compose up -d
 
 ```
-Windows:
+- Windows:
 ```PowerShell
 # 首先安装 docker desktop 并启动
 # 然后复制黏贴到PowerShell即可
@@ -28,6 +34,10 @@ Cereate-Item -ItemType Directory -Force -Path "C:\Users\Administrator\minecraft\
 Invoke-WebRequest -Uri https://raw.githubusercontents.com/WHF-Studio/mohist-docker/main/docker-compose-single-server.yml -OutFile "C:\Users\Administrator\minecraft\mohist\docker-compose.yml"
 Set-Location "C:\Users\Administrator\minecraft\mohist"
 docker-compose up -d
+```
+MacOS:
+```zsh
+curl -q "https://s3.opensuse-project.net/paste-o-o/hg50pl2tg8qb4of5afqqu0d6nxzx?response-content-disposition=inline%3B%20filename%3D%22e70e8569b57ab41048571e21edacafc1.txt%22%3B%20filename%2A%3DUTF-8%27%27e70e8569b57ab41048571e21edacafc1.txt&response-content-type=text%2Fplain&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YI5KOnADj6WdQSae%2F20231228%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231228T154417Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=759d52f655c21b3eae3ffe36c1fa0284eae3c3e95188cf92f8c6cd4940ee8194" | echo
 ```
 ## 构建状态
 [![1.12.2-publish](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml/badge.svg?branch=main)](https://github.com/WHF-Studio/mohist-docker/actions/workflows/build-1.12.2.yml)
