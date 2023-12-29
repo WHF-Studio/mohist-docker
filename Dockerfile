@@ -125,8 +125,8 @@ WORKDIR /app
 
 COPY script/download.sh /app
 
-RUN chmod a+x /app/download.sh
-RUN /app/download.sh --minecraft $version
+RUN chmod a+x /app/download.sh \
+	&& /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.19.2
 FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.19.2
