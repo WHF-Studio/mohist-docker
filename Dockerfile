@@ -19,7 +19,7 @@ RUN chmod a+x /app/download.sh
 RUN /app/download.sh --minecraft $version
 
 # run stage for minecraft 1.12.2
-FROM azul/zulu-openjdk-alpine:11-jre-latest AS run-1.12.2
+FROM azul/zulu-openjdk-alpine:8-jre-latest AS run-1.12.2
 ENV version=1.12.2
 
 LABEL maintaner="敖律风"

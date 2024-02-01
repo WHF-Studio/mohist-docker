@@ -1,5 +1,5 @@
 #!/bin/sh
-sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories
+sed -i 's/dl-cdn.alpinelinux.org/mirrors.cernet.edu.cn/g' /etc/apk/repositories
 apk add --no-cache bash
 if [ -f "/app/memorysize.txt" ]
     then

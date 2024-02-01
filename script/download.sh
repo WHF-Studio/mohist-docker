@@ -4,7 +4,7 @@
 mcversion=$(getopt --long minecraft: -- $@ | sed "s/-//g" | sed "s/ //g" | sed "s/'//g")
 echo $mcversion
 # 更换镜像源
-sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories
+sed -i 's/dl-cdn.alpinelinux.org/mirrors.cernet.edu.cn/g' /etc/apk/repositories
 # 安装依赖
 apk add --no-cache curl jq
 # 探测api连通连通性(这个地方等待修复)
