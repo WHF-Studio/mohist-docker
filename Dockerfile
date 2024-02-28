@@ -258,3 +258,76 @@ RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
 ENTRYPOINT [ "/script/lunch.sh" ]
+# build stage for minecraft 1.20.3
+
+FROM alpine AS build-1.20.3
+
+ENV version=1.20.3
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.0
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY script/download.sh /app
+
+RUN chmod a+x /app/download.sh
+RUN /app/download.sh --minecraft $version
+
+# run stage for minecraft 1.20.3
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20.3
+ENV version=1.20.3
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.1
+
+RUN mkdir /app /script
+WORKDIR /app
+
+COPY --from=mohist-docker:build-1.20.3 /app/server.jar /jbin/server.jar
+COPY script/*.sh /script/
+
+RUN chmod a+x /script/*.sh
+RUN /script/init.sh
+
+ENTRYPOINT [ "/script/lunch.sh" ]
+
+# build stage for minecraft 1.20.4
+
+FROM alpine AS build-1.20.4
+
+ENV version=1.20.4
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.0
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY script/download.sh /app
+
+RUN chmod a+x /app/download.sh
+RUN /app/download.sh --minecraft $version
+
+# run stage for minecraft 1.20.4
+FROM azul/zulu-openjdk-alpine:17-jre-headless-latest AS run-1.20.4
+ENV version=1.20.4
+
+LABEL maintaner="敖律风"
+LABEL vcs-url="https://github.com/WHF-Studio/mohist-docker"
+LABEL version=1.2.1
+
+RUN mkdir /app /script
+WORKDIR /app
+
+COPY --from=mohist-docker:build-1.20.4 /app/server.jar /jbin/server.jar
+COPY script/*.sh /script/
+
+RUN chmod a+x /script/*.sh
+RUN /script/init.sh
+
+ENTRYPOINT [ "/script/lunch.sh" ]
