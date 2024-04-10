@@ -2,3 +2,6 @@
 *.log
 libraries/
 .vscode/
+*.kate-*
+
+/vendor/

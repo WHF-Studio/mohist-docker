@@ -94,5 +94,5 @@ services: # 注：使用 Bungeecord 等跨服端时需要直接填写外网地�
     ports:
       - 25565:25565/tcp # 服务器端口
       - 25575:25575/tcp # RCON 控制台端口
-    volumes: /path/to/your/data:/app
+    volumes: /pathRaw/to/your/data:/app
 ```
