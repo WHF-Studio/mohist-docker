@@ -35,7 +35,9 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]# build stage for minecraft 1.16.5
+ENTRYPOINT [ "/script/launch.sh" ]
+
+# build stage for minecraft 1.16.5
 
 FROM alpine as build-1.16.5
 ENV version=1.16.5
@@ -71,7 +73,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.18.2
 
@@ -108,7 +110,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.19.2
 
@@ -145,7 +147,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.20
 FROM alpine AS build-1.20
@@ -182,7 +184,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.20.1
 
@@ -220,7 +222,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.20.2
 
@@ -257,7 +259,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 # build stage for minecraft 1.20.3
 
 FROM alpine AS build-1.20.3
@@ -293,7 +295,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.20.4
 
@@ -330,4 +332,4 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/lunch.sh" ]
+ENTRYPOINT [ "/script/launch.sh" ]
