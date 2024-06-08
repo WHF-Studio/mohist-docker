@@ -35,7 +35,10 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
-ENTRYPOINT [ "/script/launch.sh" ]# build stage for minecraft 1.16.5
+
+ENTRYPOINT [ "/script/launch.sh" ]
+
+# build stage for minecraft 1.16.5
 
 FROM alpine as build-1.16.5
 ENV version=1.16.5
