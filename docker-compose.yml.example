@@ -18,7 +18,7 @@ services:
       # rcon控制台
       - 25575:25575/tcp
     volumes:
-    - /path/to/your/data:/app
+    - /pathRaw/to/your/data:/app
     # 可选：将世界数据挂在单独的卷以免炸档
     - world:/app/world
 # Bungeecord 示例
@@ -34,7 +34,7 @@ services:
       - 25565:25565/tcp
       - 25575:25575/tcp
       - 25575:25575/udp
-    volumes: /path/to/your/data:/app
+    volumes: /pathRaw/to/your/data:/app
     entrypoint: ["/usr/bin/java"]
     cmd: ["-jar", "/app/bungeecord.jar", "@memorysize.txt", "@userjvmargs.txt", "-nogui"]
   Lobby:
@@ -46,7 +46,7 @@ services:
     ports:
       - 25565:25576/tcp
       - 25575:25576/tcp
-    volumes: /path/to/your/data:/app
+    volumes: /pathRaw/to/your/data:/app
     depends_on:
       - bungeecord
     main_server: example_server
@@ -58,4 +58,4 @@ services:
       ports:
         - 25565:25569/tcp
         - 25575:25579/tcp
-      volumes: /path/to/your/data:/app
+      volumes: /pathRaw/to/your/data:/app

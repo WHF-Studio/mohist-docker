@@ -35,6 +35,7 @@ COPY script/*.sh /script/
 RUN chmod a+x /script/*.sh
 RUN /script/init.sh
 
+
 ENTRYPOINT [ "/script/launch.sh" ]
 
 # build stage for minecraft 1.16.5
